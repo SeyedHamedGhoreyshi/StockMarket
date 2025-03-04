@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/hamed/Projects/StockMarket/StockMarket.csproj": {}
+    "/home/hamed/StockMarket/StockMarket.csproj": {}
   },
   "projects": {
-    "/home/hamed/Projects/StockMarket/StockMarket.csproj": {
+    "/home/hamed/StockMarket/StockMarket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/hamed/Projects/StockMarket/StockMarket.csproj",
+        "projectUniqueName": "/home/hamed/StockMarket/StockMarket.csproj",
         "projectName": "StockMarket",
-        "projectPath": "/home/hamed/Projects/StockMarket/StockMarket.csproj",
+        "projectPath": "/home/hamed/StockMarket/StockMarket.csproj",
         "packagesPath": "/home/hamed/.nuget/packages/",
-        "outputPath": "/home/hamed/Projects/StockMarket/obj/",
+        "outputPath": "/home/hamed/StockMarket/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/hamed/.nuget/NuGet/NuGet.Config"
@@ -32,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -46,6 +41,24 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[8.0.12, )"
+            },
+            "Microsoft.SqlServer.Server": {
+              "target": "Package",
+              "version": "[1.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -71,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/snap/dotnet-sdk/255/sdk/8.0.405/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.112/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
