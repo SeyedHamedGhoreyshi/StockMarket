@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using StockMarket.Data;
 using StockMarket.Interfaces;
 using StockMarket.Models;
+using StockMarket.Dtos.Comment ;
 
 namespace StockMarket.Repository
 {
@@ -24,6 +25,17 @@ namespace StockMarket.Repository
             return comment ;
         }
 
+        public async Task<Comment?> DeleteAsync(int id)
+        {
+            var commentModel = await _context.Comments.FindAsync(id) ;
+            if (commentModel == null){
+                return null ;
+            }
+            _context.Comments.Remove(commentModel);
+            await _context.SaveChangesAsync();
+            return commentModel;
+        }
+
         public async Task<List<Comment>> GetAllAsync()
         {
             return await _context.Comments.ToListAsync() ;
@@ -33,5 +45,20 @@ namespace StockMarket.Repository
         {
             return await _context.Comments.FindAsync(id);
         }
+
+            public  async Task<Comment?> UpdateAsync(int id, UpdateCommentRequestDto commentDto)
+        {
+            var commentModel =  await _context.Comments.FindAsync(id);
+            if(commentModel == null){
+                return null ;
+            }
+            commentModel.Title = commentDto.Title ;
+            commentModel.Content = commentDto.Content ;
+            await _context.SaveChangesAsync();
+            return commentModel ;
+
+        }
+
+       
     }
 }

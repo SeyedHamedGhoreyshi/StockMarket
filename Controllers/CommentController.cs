@@ -47,7 +47,7 @@ namespace StockMarket.Controllers
 
         [HttpPost("{stockId}")]
 
-        public async Task<IActionResult> Create([FromRoute] int  stockId , CreateCommentDto commentDto ){
+        public async Task<IActionResult> Create([FromRoute] int  stockId , CreateCommentRequestDto commentDto ){
             if( ! await _stockRepo.StockExists(stockId)){
                 return BadRequest("Stock does not exist");
             }
@@ -56,6 +56,29 @@ namespace StockMarket.Controllers
             await _commentRepo.CreateAsync(commentModel) ;
             return CreatedAtAction(nameof(GetById) ,  new{ id  = commentModel} ,commentModel.toCommentDto()) ;
 
+
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> Update([FromRoute]int id , UpdateCommentRequestDto updateModel){
+            var comment = await _commentRepo.UpdateAsync(id , updateModel ) ;
+            if( comment == null){
+                return NotFound("Comment not found") ;
+            }
+            return Ok(comment.toCommentDto()) ;
+
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IActionResult> Delete([FromRoute] int id){
+            var commentModel = await _commentRepo.DeleteAsync(id) ;
+
+            if( commentModel == null){
+                return NotFound("Comment not found") ;
+            }
+            return NoContent();
 
         }
 

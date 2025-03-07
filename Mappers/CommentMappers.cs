@@ -22,7 +22,7 @@ namespace StockMarket.Mappers
 
 
         }
-        public static Comment toCommentFromCreate(this CreateCommentDto commentDto , int stockID){
+        public static Comment toCommentFromCreate(this CreateCommentRequestDto commentDto , int stockID){
             return new Comment{
                 Title = commentDto.Title ,
                 Content = commentDto.Content ,
