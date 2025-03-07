@@ -201,3 +201,7 @@
 /home/hamed/StockMarket/obj/Debug/net8.0/StockMarket.pdb
 /home/hamed/StockMarket/obj/Debug/net8.0/StockMarket.genruntimeconfig.cache
 /home/hamed/StockMarket/obj/Debug/net8.0/ref/StockMarket.dll
+/home/hamed/StockMarket/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
+/home/hamed/StockMarket/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/home/hamed/StockMarket/bin/Debug/net8.0/Newtonsoft.Json.dll
+/home/hamed/StockMarket/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
