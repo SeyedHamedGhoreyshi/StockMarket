@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using StockMarket.Data;
 using StockMarket.Dtos.Stock;
+using StockMarket.Helpers;
 using StockMarket.Interfaces;
 using StockMarket.Models;
 
@@ -40,9 +41,31 @@ namespace StockMarket.Repository
 
         }
 
-        public async  Task<List<Stock>> GetAllAsync()
+        public async  Task<List<Stock>> GetAllAsync(QueryObject query)
         {
-            return  await _context.Stocks.Include(c => c.comments).ToListAsync();
+            var stocks =   _context.Stocks.Include(c => c.comments).AsQueryable();
+
+            if(!string.IsNullOrWhiteSpace(query.CompanyName)){
+                stocks = stocks.Where(s => s.CompanyName.Contains(query.CompanyName));  
+            }
+
+            if(!string.IsNullOrWhiteSpace(query.Symbol)){
+                stocks = stocks.Where(s => s.Symbol.Contains(query.Symbol));    
+                
+            }
+            if (!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                if (query.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+                {
+                    stocks = query.IsDecsending ? stocks.OrderByDescending(s => s.Symbol) : stocks.OrderBy(s => s.Symbol);
+                }
+            }
+
+            var skipNumber = (query.PageNumber - 1) * query.PageSize;
+
+
+            return await stocks.Skip(skipNumber).Take(query.PageSize).ToListAsync();
+            
         }
 
         public async Task<Stock?> GetByIdAsync(int id)
