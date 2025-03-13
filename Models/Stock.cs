@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace StockMarket.Models
 {
+    [Table("stocks")]
     public class Stock
     {
         public int ID { get; set; }
@@ -18,6 +19,7 @@ namespace StockMarket.Models
         public string Industry { get; set; } = string.Empty ;
         public long MArketCap { get; set; }
         public List<Comment> comments { get; set; } = new List<Comment>() ;
+         public List<Portfolio> Portfolios { get; set; } = new List<Portfolio>();
         
         
     }
